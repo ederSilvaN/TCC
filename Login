@@ -1,0 +1,89 @@
+Tela login 
+
+Login.html
+<ion-header>
+  <ion-navbar>
+    <ion-title>Baby Saúde</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-list insert>
+        <ion-item>
+          <ion-label  floating>E-mail</ion-label>
+          <ion-icon name="key" item-start></ion-icon>
+      @ionicframework
+         <ion-input type="text" [(ngModel)]="email"></ion-input>
+        </ion-item>
+    
+        <ion-item>
+           <ion-label floating>Senha</ion-label>
+           <ion-icon name="key" item-start></ion-icon>
+      @ionicframework
+           <ion-input type="password" [(ngModel)]="senha"></ion-input>
+    
+        </ion-item>
+    
+        <div>
+        <button ion-button [navPush]="BabyPage">Logar</button>
+        <a (click)="gotoTabsPage()">Cadastrar</a>
+        </div>
+
+        <ion-item>
+        
+            <img src="assets/imgs/img.png">
+ 
+        </ion-item>
+    
+      </ion-list>
+  
+</ion-content>
+
+Login.module.ts
+
+import { NgModule } from '@angular/core';
+import { IonicPageModule } from 'ionic-angular';
+import { LoginPage } from './login';
+
+@NgModule({
+  declarations: [
+    LoginPage,
+  ],
+  imports: [
+    IonicPageModule.forChild(LoginPage),
+  ],
+})
+export class LoginPageModule {}
+
+login.ts
+
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams,ModalController } from 'ionic-angular';
+import { TabsPage } from '../tabs/tabs';
+import { BabyPage } from '../baby/baby';
+
+/**
+ * Generated class for the LoginPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
+@IonicPage()
+@Component({
+  selector: 'page-login',
+  templateUrl: 'login.html',
+})
+export class LoginPage {
+  BabyPage=BabyPage;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad LoginPage');
+  }
+
+  gotoTabsPage(){
+    this.navCtrl.push(TabsPage)
+  }
